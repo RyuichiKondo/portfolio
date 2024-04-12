@@ -1,1 +1,0 @@
-# ryuichi-kondo-portfolio
