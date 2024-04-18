@@ -5,8 +5,8 @@ import About from "../components/pages/About";
 import Notfound from "../components/pages/Notfound";
 
 const ROUTES = [
-  {path: "/", Component: Work},
-  {path: "/about", Component: About},
+  {path: "/portfolio/" , Component: Work},
+  {path: "/portfolio/about", Component: About},
   // If you add pages, add them here.
   {path: "*", Component: Notfound},
 ] as const satisfies RouteProps[];

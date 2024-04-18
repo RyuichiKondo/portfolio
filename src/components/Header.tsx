@@ -12,11 +12,11 @@ const Header = (props: HeaderProps) => {
   const menuLogoSvgPath = (<path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>);
   const closeLogoSvgPath = (<path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>);
   const numberOfPagesExcludingNotFoundPage = ROUTES.length - 1;
-  const defaultPath = "/";
+  const defaultPath = "/portfolio/";
   const defaultPathName = "WORK";
   const currentPath = useLocation().pathname;
   const createPathName = (path: string): string =>
-    path === defaultPath ? defaultPathName : path.substring(1, path.length).toUpperCase();
+    path === defaultPath ? defaultPathName : path.substring(defaultPath.length, path.length).toUpperCase();
 
   return (
     <>
