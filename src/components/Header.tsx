@@ -21,12 +21,20 @@ const Header = (props: HeaderProps) => {
   return (
     <>
       <header className="bg-white w-full flex justify-between items-center px-vw-5 py-vw-3">
-        <Link to={defaultPath} className="" onClick={() => onToggleIsMenuOpen()}>
-          <img src="" alt="logo"/>
-        </Link>
+        {isMenuOpen ?
+          (
+            <Link to={defaultPath} className="" onClick={isMenuOpen && onToggleIsMenuOpen}>
+              <img src="" alt="logo"/>
+            </Link>
+          ) : (
+            <Link to={defaultPath} className="">
+              <img src="" alt="logo"/>
+            </Link>
+          )
+        }
         {/* Hamburger Menu */}
         <div className="flex md:hidden">
-          <button type="button" aria-label="toggle menu" onClick={() => onToggleIsMenuOpen()}>
+          <button type="button" aria-label="toggle menu" onClick={onToggleIsMenuOpen}>
             <svg className="fill-primary" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
               {isMenuOpen ? closeLogoSvgPath : menuLogoSvgPath}
             </svg>
