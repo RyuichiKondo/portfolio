@@ -1,5 +1,3 @@
-import ROUTES from "./ROUTES";
-
 type worksItem = {
   name: string, 
   img: string,
