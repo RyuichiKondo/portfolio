@@ -11,7 +11,7 @@ const Header = (props: HeaderProps) => {
   const {isMenuOpen, onToggleIsMenuOpen} = props;
   const menuLogoSvgPath = (<path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>);
   const closeLogoSvgPath = (<path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>);
-  const numberOfPagesExcludingNotFoundPage = ROUTES.length - 1;
+  const numberOfMenu = ["work", "about"].length;
   const defaultPath = "/portfolio/";
   const defaultPathName = "WORK";
   const currentPath = useLocation().pathname;
@@ -21,17 +21,9 @@ const Header = (props: HeaderProps) => {
   return (
     <>
       <header className="bg-white w-full flex justify-between items-center px-vw-5 py-vw-3">
-        {isMenuOpen ?
-          (
-            <Link to={defaultPath} className="" onClick={isMenuOpen && onToggleIsMenuOpen}>
-              <img src="" alt="logo"/>
-            </Link>
-          ) : (
-            <Link to={defaultPath} className="">
-              <img src="" alt="logo"/>
-            </Link>
-          )
-        }
+        <Link to={defaultPath} className="" {...(isMenuOpen && {onClick: onToggleIsMenuOpen})}>
+          <img src="" alt="logo"/>
+        </Link>
         {/* Hamburger Menu */}
         <div className="flex md:hidden">
           <button type="button" aria-label="toggle menu" onClick={onToggleIsMenuOpen}>
@@ -43,7 +35,7 @@ const Header = (props: HeaderProps) => {
         {/* Menu Link */}
         <nav className="hidden md:flex flex-row items-center">
           {ROUTES.map(({path}, i) =>
-            ((i < numberOfPagesExcludingNotFoundPage) &&
+            ((i < numberOfMenu) &&
               <Link key={i} to={path}
                 className={
                   (path === currentPath ? "text-primary" : "text-black") + " ml-vw-3 text-sm hover:text-primary"
@@ -57,7 +49,7 @@ const Header = (props: HeaderProps) => {
       </header>
       {isMenuOpen &&
         <HamburgerMenuModal
-          numberOfPagesExcludingNotFoundPage={numberOfPagesExcludingNotFoundPage}
+          numberOfMenu={numberOfMenu}
           currentPath={currentPath}
           onCreatePathName={createPathName}
           onToggleIsMenuOpen={onToggleIsMenuOpen}

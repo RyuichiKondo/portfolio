@@ -5,7 +5,7 @@ const Work = () => {
   return (
     <div className="md:flex md:flex-wrap">
       {WORKS.map(
-        ({name, img, link}, i) => (
+        ({name, img, path}, i) => (
           <div key={i}
             className={
               "border-solid border-primary border-2 h-vh-30 my-vh-5"
@@ -19,7 +19,7 @@ const Work = () => {
               backgroundPosition: "center"
             }}
           >
-            <Link key={i} to={link.path ? link.path : "/"}
+            <Link key={i} to={path}
               className="flex items-center justify-center w-full h-full text-[min(10vw,80px)] font-bold text-white opacity-0
                 hover:opacity-100 hover:bg-primary-opacity"
             >
