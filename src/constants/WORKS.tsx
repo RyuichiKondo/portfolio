@@ -4,10 +4,14 @@ type worksItem = {
   path: string
 };
 
-const assertsRootPath = window.location.hostname === "localhost"
+const isLocal = window.location.hostname === "localhost";
+const assertsRootPath = isLocal
   ? "/src/assets/"
   : "https://github.com/RyuichiKondo/portfolio/blob/main/src/assets/";
-const createImgPath = (fileName: string): string => assertsRootPath + fileName;
+const createImgPath = (fileName: string): string => {
+  const path = assertsRootPath + fileName;
+  return isLocal ? path : path + "?raw=true";
+}
 const workPagesRootPath = "/portfolio/";
 const createWorkPagePath = (path: string): string => workPagesRootPath + path;
 
